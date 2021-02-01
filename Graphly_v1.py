@@ -1,11 +1,37 @@
 from tkinter import*
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.figure import Figure 
+from matplotlib.backends.backend_tkagg import (FigureCanvasTkAgg,  
+NavigationToolbar2Tk)
 root=Tk()
 root.title('Graphly')
-root.geometry("700x250")
+root.geometry("700x850")
 
-
+def eq_maker(ls1,ls2):
+    fin='y= '
+    for i in range(len(ls1)):
+        if i>0 and ls1[i]>0:
+            fin+='+'
+        if ls1[i]==1:
+            if ls2[i]==0:
+                fin+='1'
+            elif ls2[i]==1:
+                fin+='x'
+            else:
+                fin+='x^'+str(ls2[i])
+        else:
+            if ls2[i]==0:
+                fin+=str(ls1[i])
+            elif ls2[i]==1:
+                fin+=str(ls1[i])+'x'
+            else:
+                fin+=str(ls1[i])+'x^'+str(ls2[i])
+    return fin
+           
+           
+   
+   
 def coef():
     lst1=e1.get().split(",")
     for i in range(len(lst1)):
@@ -35,10 +61,18 @@ def plot():
             m=np.power(x,a2[i])
             m=np.multiply(m,a1[i])
             y=np.add(y,m)
-        plt.plot(x,y)
-        plt.show()
-        
-    
+        string=eq_maker(a1,a2)
+        fig=Figure(figsize=(5,5))  
+        plot1=fig.add_subplot(111)
+        plot1.plot(x,y)
+        plot1.title.set_text("Plot of : "+string)
+        canvas=FigureCanvasTkAgg(fig,master=root)
+        canvas.draw()
+        canvas.get_tk_widget().place(x=50,y=250)
+        toolbar=NavigationToolbar2Tk(canvas, window)
+        toolbar.update()
+       
+   
 
 l1=Label(text='Enter the coeffecients of powers of x \nseparating with commas')
 l2=Label(text='Enter the powers of x \nseparating with commas')
