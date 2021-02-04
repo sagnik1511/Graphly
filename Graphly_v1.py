@@ -52,7 +52,7 @@ def plot():
     e1.delete(0,END)
     e2.delete(0,END)
     if len(a1)!=len(a2):
-        e1.insert(0,'Error \n click on restart')
+        e1.inser(0,'Error \n click on restart')
     else:
         y=np.zeros(20)
         x=np.arange(1,21,1)
