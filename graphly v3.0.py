@@ -52,8 +52,8 @@ def adco():
 
 def restart():
     e.delete(0,END)
-    coef=[]
-    power=[]
+    coef.clear()
+    power.clear()
     
 def backspace():
     e.delete(len(e.get())-1,END)
