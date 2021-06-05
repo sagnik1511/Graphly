@@ -27,6 +27,10 @@ Desktop graph plotter app
    
           $pip install -r requirements.txt
         
+       D)  Then write 
+              
+              $pip install tkintertable
+        
        D)  Clone this repository.
        
        E)  Open the base folder of the repository.
