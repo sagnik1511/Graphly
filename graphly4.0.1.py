@@ -34,12 +34,12 @@ def negpow(arr , k):
   xx = arr.tolist()
   ar = []
   for i in xx:
-    ar.append(pow(i,k))
-  return np.array(ar)
+    ar.append( pow( i , k ) )
+  return np.array( ar )
 
 
 def Exit():
-    if tkinter.messagebox.askquestion('Exit ','Do you really want to exit ?') == 'yes':
+    if tkinter.messagebox.askquestion( 'Exit ' , 'Do you really want to exit ?' ) == 'yes':
         root.destroy()
 
 
@@ -47,14 +47,14 @@ def coef_apply_fn():
     try :
         x1 = int( coef_lower_entry.get() )
         x2 = int( coef_upper_entry.get() )
-        coef_lower_entry.delete(0,tkinter.END)
-        coef_upper_entry.delete(0,tkinter.END)
+        coef_lower_entry.delete( 0 , tkinter.END )
+        coef_upper_entry.delete( 0 , tkinter.END )
         assert x1<=x2
         coef_scaler.config( from_ = x1 , to = x2 )
     except :
-        power_lower_entry.delete(0,tkinter.END)
-        power_upper_entry.delete(0,tkinter.END)
-        tkinter.messagebox.showwarning("Add Coefficients", "Add valid numbers!")
+        coef_lower_entry.delete( 0 , tkinter.END )
+        coef_upper_entry.delete( 0 , tkinter.END )
+        tkinter.messagebox.showwarning( "Add Coefficients", "Add valid numbers!" )
     
 def power_apply_fn():
     try :
@@ -67,7 +67,7 @@ def power_apply_fn():
     except :
         power_lower_entry.delete( 0 , tkinter.END )
         power_upper_entry.delete( 0 , tkinter.END )
-        tkinter.messagebox.showwarning("Add Powers", "Add valid numbers!")
+        tkinter.messagebox.showwarning( "Add Powers", "Add valid numbers!" )
 
 
 def add_value_fn():
@@ -86,11 +86,11 @@ def delete_value_fn():
         coef_entry.delete( 0 , tkinter.END )
         assert power_array[0] != ''
         for i in range( len( power_array ) - 1 ):
-            power_entry.insert( END  , power_array[i] + ',')
+            power_entry.insert( tkinter.END  , power_array[i] + ',')
         for i in range( len( coef_array ) - 1 ):
-            coef_entry.insert( END , coef_array[i]+',')
+            coef_entry.insert( tkinter.END , coef_array[i]+',')
     except:
-        tkinter.messagebox.showwarning("Delete Variables", "No values to delete!")
+        tkinter.messagebox.showwarning( "Delete Variables", "No values to delete!" )
           
         
 def restart_fn():
@@ -98,22 +98,22 @@ def restart_fn():
     coef_entry.delete( 0 , tkinter.END )
     coef_scaler.config( from_ = -1000 , to = 1000 )
     power_scaler.config( from_ = -10 , to = 10 )
-    fig=Figure(figsize=(5,5),dpi=48)  
-    plot=fig.add_subplot(111)
-    canvas=FigureCanvasTkAgg(fig,master=root)
+    fig=Figure(figsize=( 5 , 5 ) , dpi = 48 )  
+    plot=fig.add_subplot( 111 )
+    canvas=FigureCanvasTkAgg( fig , master = root )
     canvas.draw()
-    canvas.get_tk_widget().place(x=420,y=129)
+    canvas.get_tk_widget().place( x = 420 , y = 129 )
     
 
 
 def plot_fn():
     try:
-        y=np.zeros(80)
-        x=np.arange(1,21,0.25)
+        y=np.zeros( 80 )
+        x=np.arange( 1 , 21 , 0.25 )
         power_array = list(map(int , power_entry.get()[:-1].split(',') ))
         coef_array = list(map(int ,  coef_entry.get()[:-1].split(',') ))
-        for i in range(len(power_array)):
-            ones = np.arange(1,21,0.25)
+        for i in range(len( power_array ) ):
+            ones = np.arange( 1 , 21 , 0.25 )
             if power_array[i] >= 0 :
                 ones = pow( ones , power_array[i]  )
             else:
@@ -121,14 +121,14 @@ def plot_fn():
             ones = ones * coef_array[i] 
             y = np.add( y , ones )
         
-        fig=Figure(figsize=(5,5),dpi=48)  
-        plot=fig.add_subplot(111)
-        plot.plot(x,y)
-        canvas=FigureCanvasTkAgg(fig,master=root)
+        fig=Figure(figsize=( 5 , 5 ), dpi = 48 )  
+        plot=fig.add_subplot( 111 )
+        plot.plot( x , y )
+        canvas=FigureCanvasTkAgg( fig , master = root )
         canvas.draw()
-        canvas.get_tk_widget().place(x=420,y=129)
+        canvas.get_tk_widget().place( x = 420 , y = 129 )
     except:
-        tkinter.messagebox.showwarning('Graphly', 'Add valid values!')
+        tkinter.messagebox.showwarning( 'Graphly' , 'Add valid values!' )
     
     
     
