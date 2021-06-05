@@ -39,7 +39,8 @@ Desktop graph plotter app
             
             $ graphly4.0.1.py
             
-  2. Will update the desktop application (.exe) soon. The desktop app can be used without any dependencies.
+  2. Or you can download the .exe application straight from the link - https://drive.google.com/file/d/15xGd_Lo_PbSBQH7QWgr-C6AkmvAuNQU1/view?usp=sharing . When downloading it may show virus warning, you have to discard that option and download straightaway and run it without any other requirements.
+     **P.S.** This .exe only works on 64-bit operating systems. 
 
 ## Interface :
 ---
