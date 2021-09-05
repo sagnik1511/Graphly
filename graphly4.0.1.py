@@ -1,17 +1,15 @@
 """
 Created on Thu Jun  3 18:50:28 2021
 
+
+Graphy 4.0.1
+
 @author: Kylo Ren
 """
-
-# Graphy 4.0.1
-
 """Updated Version of Graphly , now adding values will be easier.
 Tried to put altogether in a single file.
 Try the GUI and send feedbacks.
 """
-
-
 
 # Libraries -------------------------------------------------------------------------------
 
